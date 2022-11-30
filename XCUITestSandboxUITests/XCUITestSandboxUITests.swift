@@ -26,7 +26,20 @@ final class XCUITestSandboxUITests: XCTestCase {
     func testExample() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
+        app.launchArguments = ["enable-testing"]
         app.launch()
+        
+        /**
+        That will pass “enable-testing” to the app when it’s launched, which we can then make it detect and respond to. Our sandbox app doesn’t have any initial state to worry about, but if you needed to configure your app in a certain way then you’d add something like this to your main app:
+         
+        #if DEBUG
+        if CommandLine.arguments.contains("enable-testing") {
+            configureAppForTesting()
+        }
+        #endif
+         
+        What configureAppForTesting() does is down to you – you might load some fixed data, for example, so that your test stubs work as expected.
+        */
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
