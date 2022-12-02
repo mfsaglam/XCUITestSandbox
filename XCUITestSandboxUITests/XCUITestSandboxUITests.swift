@@ -23,38 +23,19 @@ final class XCUITestSandboxUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testLabelCopiesTextField() {
         let app = XCUIApplication()
-        app.launchArguments = ["enable-testing"]
         app.launch()
         
         app.textFields.element.tap()
-        
+
         app.keys["t"].tap()
         app.keys["e"].tap()
         app.keys["s"].tap()
         app.keys["t"].tap()
         app.keyboards.buttons["Return"].tap()
-        
-        app.sliders["Completion"].swipeRight()
-        app.segmentedControls.buttons["Omega"].tap()
-        app.buttons["Blue"].tap()
-        app.alerts["Blue"].buttons["OK"].tap()
-        
-        /**
-        That will pass “enable-testing” to the app when it’s launched, which we can then make it detect and respond to. Our sandbox app doesn’t have any initial state to worry about, but if you needed to configure your app in a certain way then you’d add something like this to your main app:
-         
-        #if DEBUG
-        if CommandLine.arguments.contains("enable-testing") {
-            configureAppForTesting()
-        }
-        #endif
-         
-        What configureAppForTesting() does is down to you – you might load some fixed data, for example, so that your test stubs work as expected.
-        */
 
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertEqual(app.staticTexts["TextCopy"].label, "test")
     }
 
     func testLaunchPerformance() throws {
