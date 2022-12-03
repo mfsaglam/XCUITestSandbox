@@ -37,6 +37,20 @@ final class XCUITestSandboxUITests: XCTestCase {
 
         XCTAssertEqual(app.staticTexts["TextCopy"].label, "test")
     }
+    
+    func testSliderControlsProgress() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.sliders["Completion"].adjust(toNormalizedSliderPosition: 1)
+        
+        guard let completion = app.progressIndicators.element.value as? String else {
+            XCTFail("Unable to find the progress indicator.")
+            return
+        }
+        
+        XCTAssertEqual(completion, "%0")
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
