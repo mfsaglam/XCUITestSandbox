@@ -51,6 +51,15 @@ final class XCUITestSandboxUITests: XCTestCase {
         
         XCTAssertEqual(completion, "%0")
     }
+    
+    func testButtonsShowAlerts() {
+        let app = XCUIApplication()
+        app.launch()
+        
+        app.buttons["Blue"].tap()
+        XCTAssertTrue(app.alerts["Blue"].exists)
+        app.alerts["Blue"].buttons["OK"].tap()
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
