@@ -60,6 +60,21 @@ final class XCUITestSandboxUITests: XCTestCase {
         XCTAssertTrue(app.alerts["Blue"].exists)
         app.alerts["Blue"].buttons["OK"].tap()
     }
+    
+    func testExample() {
+        let app = XCUIApplication()
+        app.launch()
+        app.textFields.element.tap()
+        app.textFields.element.typeText("test")
+        app.keyboards.buttons["Return"].tap()
+
+        app.sliders["50%"].swipeRight()
+        app.segmentedControls.buttons["Omega"].tap()
+        app.buttons["Blue"].tap()
+        app.alerts["Blue"].buttons["OK"].tap()
+
+        XCTAssertTrue(app.alerts["Blue"].exists)
+    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
