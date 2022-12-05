@@ -68,7 +68,7 @@ final class XCUITestSandboxUITests: XCTestCase {
         app.textFields.element.typeText("test")
         app.keyboards.buttons["Return"].tap()
 
-        app.sliders["50%"].swipeRight()
+        app.sliders["%50"].swipeRight()
         app.segmentedControls.buttons["Omega"].tap()
         app.buttons["Blue"].tap()
         app.alerts["Blue"].buttons["OK"].tap()
