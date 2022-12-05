@@ -71,7 +71,6 @@ final class XCUITestSandboxUITests: XCTestCase {
         app.sliders["%50"].swipeRight()
         app.segmentedControls.buttons["Omega"].tap()
         app.buttons["Blue"].tap()
-        app.alerts["Blue"].buttons["OK"].tap()
 
         XCTAssertTrue(app.alerts["Blue"].exists)
     }
